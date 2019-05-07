@@ -11,7 +11,27 @@ export default {
     return {
       map: null,
       tileLayer: null,
-      layers: [],
+      layers: [
+        {
+          id: 0,
+          name: "Bandung Map",
+          active: true,
+          features: [
+            {
+              id: 0,
+              name: "Cibeunying",
+              type: "polygon",
+              coords: [
+                [-6.843263, 107.597039],
+                [-6.889269, 107.556148],
+                [-6.963528, 107.626210],
+                [-6.909502, 107.736855]
+              ],
+              center: [-6.911056, 107.636914]
+            }
+          ]
+        }
+      ],
     }
   },
   methods: {
@@ -25,7 +45,43 @@ export default {
       );
       this.tileLayer.addTo(this.map);
     },
-    initLayers() {},
+    initLayers() {
+      this.layers.forEach((layer) => {
+        const markerFeatures = layer.features.filter(feature => feature.type === 'marker');
+        const polygonFeatures = layer.features.filter(feature => feature.type === 'polygon');
+        markerFeatures.forEach((feature) => {
+          feature.leafletObject = L.marker(feature.coords)
+            .bindPopup(feature.name);
+        });
+        polygonFeatures.forEach((feature) => {
+          feature.leafletObject = L.polygon(feature.coords, {
+            'label' : feature.name,
+            'center' : feature.center
+          })
+          feature.leafletObject.bindPopup(feature.name)
+          feature.leafletObject.on('mouseover', this.onPolyHover)
+          feature.leafletObject.on('mouseout', this.onPolyOut)
+          feature.leafletObject.on('click', this.onPolyClick)
+        });
+        layer.features.forEach((feature) => {
+          if (layer.active) {
+            feature.leafletObject.addTo(this.map)
+          }
+        })
+      })
+    },
+    onPolyClick(event){
+      event.target.setStyle({
+        fillOpacity: 0
+      })
+      this.map.setView(event.target.options.center, 14)
+    },
+    onPolyHover(event){
+      event.target.openPopup();
+    },
+    onPolyOut(event){
+      event.target.closePopup();
+    }
   },
   mounted() {
     this.initMap();
