@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "apexcharts": "^3.6.10",
+    "bootstrap": "^4.3.1",
+    "bootstrap-vue": "^2.0.0-rc.19",
     "core-js": "^2.6.5",
     "leaflet": "^1.4.0",
     "vue": "^2.6.10",
