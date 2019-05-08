@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       map: null,
+      isFilled: true,
       tileLayer: null,
       layers: [
         {
@@ -27,13 +28,19 @@ export default {
                 [-6.963528, 107.626210],
                 [-6.909502, 107.736855]
               ],
-              center: [-6.911056, 107.636914]
+              center: [-6.911056, 107.636914],
+              isActive: true
             }
           ]
         }
       ],
     }
   },
+  // computed: {
+  //   onClickListener() {
+  //     return this.isFilled ? this.onPolyClickIn : this.onPolyClickOut
+  //   }
+  // },
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], 13);
@@ -80,14 +87,22 @@ export default {
       })
     },
     onPolyClickIn(event){
+      event.target.setStyle({
+        fillOpacity: 0,
+      })
+      this.isFilled = false
       this.map.fitBounds(event.target.getBounds())
+      event.target.off('click', this.onPolyClickIn)
       event.target.on('click', this.onPolyClickOut)
+      this.$root.$emit('click', "agung")
     },
     onPolyClickOut(event){
       event.target.setStyle({
-        fillOpacity: 0.5
+        fillOpacity: 0.1,
       })
+      this.isFilled = true
       this.map.setView(event.target.options.center, 13)
+      event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
     },
     onPolyHover(event){
