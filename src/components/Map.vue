@@ -11,7 +11,7 @@ export default {
     return {
       map: null,
       mapMinZoom: 12,
-      mapMaxZoom: 20,
+      mapMaxZoom: 18,
       tileLayer: null,
       backgroundLayer: {
         id: 0,
@@ -430,7 +430,6 @@ export default {
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], this.mapMinZoom);
-      this.map.dragging.disable()
       this.tileLayer = L.tileLayer(
         'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
         {
