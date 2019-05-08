@@ -407,7 +407,7 @@ export default {
         {
           id: 0,
           name: "SWK Kota Bandung",
-          active: true,
+          active: false,
           features: [
             {
               id: 1,
