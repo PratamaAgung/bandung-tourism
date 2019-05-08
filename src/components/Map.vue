@@ -37,10 +37,19 @@ export default {
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], 13);
+      this.map.dragging.disable()
       this.tileLayer = L.tileLayer(
         'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
         {
-          maxZoom: 20
+          maxZoom: 20,
+          minZoom: 10,
+          bounds: [
+                [-6.843263, 107.597039],
+                [-6.889269, 107.556148],
+                [-6.963528, 107.626210],
+                [-6.909502, 107.736855]
+              ],
+          attributionControl: false
         }
       );
       this.tileLayer.addTo(this.map);
@@ -61,7 +70,7 @@ export default {
           feature.leafletObject.bindPopup(feature.name)
           feature.leafletObject.on('mouseover', this.onPolyHover)
           feature.leafletObject.on('mouseout', this.onPolyOut)
-          feature.leafletObject.on('click', this.onPolyClick)
+          feature.leafletObject.on('click', this.onPolyClickIn)
         });
         layer.features.forEach((feature) => {
           if (layer.active) {
@@ -70,11 +79,16 @@ export default {
         })
       })
     },
-    onPolyClick(event){
+    onPolyClickIn(event){
+      this.map.fitBounds(event.target.getBounds())
+      event.target.on('click', this.onPolyClickOut)
+    },
+    onPolyClickOut(event){
       event.target.setStyle({
-        fillOpacity: 0
+        fillOpacity: 0.5
       })
-      this.map.setView(event.target.options.center, 14)
+      this.map.setView(event.target.options.center, 13)
+      event.target.on('click', this.onPolyClickIn)
     },
     onPolyHover(event){
       event.target.openPopup();
