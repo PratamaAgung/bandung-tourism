@@ -62,15 +62,26 @@ export default {
     }
   },
   methods: {
+    getTotalDestination: function(series) {
+      var totalDestination = 0
+      series.forEach(dest => {
+        totalDestination += dest
+      })
+      return totalDestination
+    },
     updateSeries: function (swkId) {
       this.swkData.forEach(swk => {
         if (swk.id == swkId) {
           this.series = swk.series
         }
+        var totalDestination = this.getTotalDestination(this.series)
+        this.$emit("totalDestinationChanged", totalDestination)
       });
     },
     resetSeries: function () {
       this.series = this.allBandungSeries
+      var totalDestination = this.getTotalDestination(this.series)
+      this.$emit("totalDestinationChanged", totalDestination)
     }
   },
   mounted() {

@@ -12,12 +12,12 @@
       <b-card-group deck>
         <b-card bg-variant="primary" text-variant="white" header="Jumlah Objek Wisata" class="text-center">
           <b-card-text class="align-middle">
-            <h1 class="display-1">11</h1>
+            <h1 class="display-1" id="total-destination" ref="total-destination">11</h1>
           </b-card-text>
         </b-card>
 
         <b-card bg-variant="light" text-variant="black" header="Jenis Objek Wisata" class="text-center">
-          <PieChart/>
+          <PieChart @totalDestinationChanged="updateTotalDestination($event)"/>
         </b-card>
 
       </b-card-group>
@@ -40,6 +40,11 @@ export default {
   components: {
     Map,
     PieChart
+  },
+  methods: {
+    updateTotalDestination: function(e) {
+      this.$refs["total-destination"].innerText = e
+    }
   }
 }
 
