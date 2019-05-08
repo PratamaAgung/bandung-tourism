@@ -10,6 +10,7 @@ export default {
   data() {
     return {
       map: null,
+      isFilled: true,
       tileLayer: null,
       layers: [
         {
@@ -405,25 +406,32 @@ export default {
                 [-6.841573, 107.597493],
                 [-6.839423, 107.597348]
               ],
-              center: [-6.914744, 107.609810]
+              center: [-6.914744, 107.609810],
+              isActive: true
+            },
+            {
+              id: 1,
+              name: "Cibeunying",
+              type: "polygon",
+              coords: [
+                [-6.843263, 107.597039],
+                [-6.889269, 107.556148],
+                [-6.963528, 107.626210],
+                [-6.909502, 107.736855]
+              ],
+              center: [-6.911056, 107.636914],
+              isActive: false
             }
-            // {
-            //   id: 1,
-            //   name: "Cibeunying",
-            //   type: "polygon",
-            //   coords: [
-            //     [-6.843263, 107.597039],
-            //     [-6.889269, 107.556148],
-            //     [-6.963528, 107.626210],
-            //     [-6.909502, 107.736855]
-            //   ],
-            //   center: [-6.911056, 107.636914]
-            // }
           ]
         }
       ],
     }
   },
+  // computed: {
+  //   onClickListener() {
+  //     return this.isFilled ? this.onPolyClickIn : this.onPolyClickOut
+  //   }
+  // },
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], 13);
@@ -470,14 +478,22 @@ export default {
       })
     },
     onPolyClickIn(event){
+      event.target.setStyle({
+        fillOpacity: 0,
+      })
+      this.isFilled = false
       this.map.fitBounds(event.target.getBounds())
+      event.target.off('click', this.onPolyClickIn)
       event.target.on('click', this.onPolyClickOut)
+      this.$root.$emit('click', "agung")
     },
     onPolyClickOut(event){
       event.target.setStyle({
-        fillOpacity: 0.5
+        fillOpacity: 0.1,
       })
+      this.isFilled = true
       this.map.setView(event.target.options.center, 13)
+      event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
     },
     onPolyHover(event){

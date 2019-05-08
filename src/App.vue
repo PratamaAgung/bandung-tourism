@@ -1,19 +1,24 @@
 <template>
   <div id="app">
-    <Map/>
+    <Map @click="onClick($event)"/>
+    <Graph/>
   </div>
 </template>
 
 <script>
 import Map from './components/Map.vue'
+import Graph from './components/Graph.vue'
 
 export default {
   name: 'app',
   components: {
-    Map
+    Map,
+    Graph
   }
 }
+
 </script>
+
 
 <style>
 #app {
