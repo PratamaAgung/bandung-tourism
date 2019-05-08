@@ -17,7 +17,7 @@
         </b-card>
 
         <b-card bg-variant="light" text-variant="black" header="Jenis Objek Wisata" class="text-center">
-          <Graph/>
+          <PieChart/>
         </b-card>
 
       </b-card-group>
@@ -30,6 +30,7 @@ import Map from './components/Map.vue'
 import Graph from './components/Graph.vue'
 import BootstrapVue from 'bootstrap-vue'
 import Vue from 'vue'
+import PieChart from './components/PieChart.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
@@ -39,7 +40,7 @@ export default {
   name: 'app',
   components: {
     Map,
-    Graph
+    PieChart
   }
 }
 

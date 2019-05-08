@@ -1,6 +1,6 @@
 <template>
   <div>
-    <apexchart type=pie width=500 :series="series" :options="chartOptions" />
+    <apexchart type=donut width=500 :series="series" :options="chartOptions" />
   </div>
 </template>
 
@@ -11,6 +11,7 @@ Vue.use(VueApexCharts)
 Vue.component('apexchart', VueApexCharts)
 
 export default {
+  name: "PieChart",
   data: function() {
     return {
       series: [7, 6, 10, 12, 9, 9],
@@ -26,6 +27,17 @@ export default {
         }]
       }
     }
+  },
+  methods: {
+    reset: function () {
+          this.series = [10, 6, 10, 12, 9, 9]
+        },
+  },
+  mounted() {
+    this.$root.$on('swkClickedIn', (e) => {
+          this.reset();
+          console.log(e)
+      })
   }
 }
 </script>
