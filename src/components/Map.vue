@@ -410,7 +410,7 @@ export default {
           active: false,
           features: [
             {
-              id: 1,
+              id: 0,
               name: "Cibeunying",
               type: "polygon",
               coords: [
