@@ -14,7 +14,7 @@ export default {
   name: "PieChart",
   data: function() {
     return {
-      series: [7, 6, 10, 12, 9, 9],
+      series: [],
       chartOptions: {
         labels: ['Wisata Alam', 'Wisata Budaya', 'Sejarah', 'Taman', 'Hiburan', 'Perbelanjaan'],
         responsive: [{
@@ -25,19 +25,62 @@ export default {
             }
           }
         }]
-      }
+      },
+      allBandungSeries: [7, 6, 10, 12, 9, 9],
+      swkData: [
+        {
+          id: 0,
+          name: "Cibeunying",
+          series: [6, 3, 7, 11, 4, 4]
+        },
+        {
+          id: 1,
+          name: "Bojonagara",
+          series: [0, 2, 1, 0, 2, 2]
+        },
+        {
+          id: 2,
+          name: "Tegallega",
+          series: [0, 0, 1, 1, 0, 1]
+        },
+        {
+          id: 3,
+          name: "Karees",
+          series: [1, 1, 1, 0, 2, 2]
+        },
+        {
+          id: 4,
+          name: "Ujung Berung",
+          series: [0, 0, 0, 0, 1, 0]
+        },
+        {
+          id: 5,
+          name: "Gedebage",
+          series: [0, 0, 0, 0, 0, 0]
+        }
+      ]
     }
   },
   methods: {
-    reset: function () {
-          this.series = [10, 6, 10, 12, 9, 9]
-        },
+    updateSeries: function (swkId) {
+      this.swkData.forEach(swk => {
+        if (swk.id == swkId) {
+          this.series = swk.series
+        }
+      });
+    },
+    resetSeries: function () {
+      this.series = this.allBandungSeries
+    }
   },
   mounted() {
-    this.$root.$on('swkClickedIn', (e) => {
-          this.reset();
-          console.log(e)
-      })
+    this.resetSeries()
+    this.$root.$on('swkClickedIn', (swkId) => {
+        this.updateSeries(swkId)
+    })
+    this.$root.$on('swkClickedOut', () => {
+        this.resetSeries()
+    })
   }
 }
 </script>
