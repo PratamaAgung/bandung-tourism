@@ -407,7 +407,7 @@ export default {
         {
           id: 0,
           name: "SWK Kota Bandung",
-          active: false,
+          active: true,
           features: [
             {
               id: 1,
@@ -473,7 +473,8 @@ export default {
         polygonFeatures.forEach((feature) => {
           feature.leafletObject = L.polygon(feature.coords, {
             'label' : feature.name,
-            'center' : feature.center
+            'center' : feature.center,
+            "id" : feature.id
           })
           feature.leafletObject.bindPopup(feature.name + "\n13")
           feature.leafletObject.on('mouseover', this.onPolyHover)
@@ -495,7 +496,7 @@ export default {
       this.map.fitBounds(event.target.getBounds())
       event.target.off('click', this.onPolyClickIn)
       event.target.on('click', this.onPolyClickOut)
-      this.$root.$emit('click', "agung")
+      this.$root.$emit('swkClickedIn', event.target.options.id)
     },
     onPolyClickOut(event){
       event.target.setStyle({
@@ -505,6 +506,7 @@ export default {
       this.map.setView(event.target.options.center, this.mapMinZoom)
       event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
+      this.$root.$emit('swkClickedOut')
     },
     onPolyHover(event){
       event.target.openPopup();
