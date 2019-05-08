@@ -5,9 +5,22 @@
         <b-navbar-brand href="#">Bandung Tourism</b-navbar-brand>
       </b-navbar>
     </div>
-    <div>
-      <Map @click="onClick($event)"/>
-      <Graph/>
+    <b-card bg-variant="light" text-variant="white" style="s">
+      <Map/>
+    </b-card>
+    <div style="padding:10px">
+      <b-card-group deck>
+        <b-card bg-variant="primary" text-variant="white" header="Jumlah Objek Wisata" class="text-center">
+          <b-card-text class="align-middle">
+            <h1 class="display-1">11</h1>
+          </b-card-text>
+        </b-card>
+
+        <b-card bg-variant="light" text-variant="black" header="Jenis Objek Wisata" class="text-center">
+          <Graph/>
+        </b-card>
+
+      </b-card-group>
     </div>
   </div>
 </template>

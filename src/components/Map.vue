@@ -406,7 +406,7 @@ export default {
       layers: [
         {
           id: 0,
-          name: "SWK Kota BAndung",
+          name: "SWK Kota Bandung",
           active: false,
           features: [
             {
@@ -427,11 +427,6 @@ export default {
       ],
     }
   },
-  // computed: {
-  //   onClickListener() {
-  //     return this.isFilled ? this.onPolyClickIn : this.onPolyClickOut
-  //   }
-  // },
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], this.mapMinZoom);
@@ -529,6 +524,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .map {
-  height: 600px;
+  height: 450px;
 }
 </style>
