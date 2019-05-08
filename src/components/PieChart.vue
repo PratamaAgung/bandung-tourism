@@ -1,6 +1,6 @@
 <template>
   <div>
-    <apexchart type=donut width=500 :series="series" :options="chartOptions" />
+    <apexchart type=donut height=300px :series="series" :options="chartOptions" />
   </div>
 </template>
 
