@@ -11,7 +11,7 @@ export default {
     return {
       map: null,
       mapMinZoom: 12,
-      mapMaxZoom: 20,
+      mapMaxZoom: 18,
       tileLayer: null,
       backgroundLayer: {
         id: 0,
@@ -406,10 +406,11 @@ export default {
       layers: [
         {
           id: 0,
-          name: "SWK Kota BAndung",
+          name: "SWK Kota Bandung",
           active: false,
           features: [
             {
+<<<<<<< HEAD
               id: 1,
               name: "Bojonagara",
               type: "polygon",
@@ -482,6 +483,8 @@ export default {
               isActive: false
             },
             {
+=======
+>>>>>>> c83e341a705a244ed76b6d4438df117d45038fdc
               id: 0,
               name: "Cibeunying",
               type: "polygon",
@@ -1021,15 +1024,9 @@ export default {
       ],
     }
   },
-  // computed: {
-  //   onClickListener() {
-  //     return this.isFilled ? this.onPolyClickIn : this.onPolyClickOut
-  //   }
-  // },
   methods: {
     initMap() {
       this.map = L.map('map').setView([-6.911056, 107.636914], this.mapMinZoom);
-      this.map.dragging.disable()
       this.tileLayer = L.tileLayer(
         'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
         {
@@ -1072,7 +1069,8 @@ export default {
         polygonFeatures.forEach((feature) => {
           feature.leafletObject = L.polygon(feature.coords, {
             'label' : feature.name,
-            'center' : feature.center
+            'center' : feature.center,
+            "id" : feature.id
           })
           feature.leafletObject.bindPopup(feature.name + "\n13")
           feature.leafletObject.on('mouseover', this.onPolyHover)
@@ -1094,7 +1092,7 @@ export default {
       this.map.fitBounds(event.target.getBounds())
       event.target.off('click', this.onPolyClickIn)
       event.target.on('click', this.onPolyClickOut)
-      this.$root.$emit('click', "agung")
+      this.$root.$emit('swkClickedIn', event.target.options.id)
     },
     onPolyClickOut(event){
       event.target.setStyle({
@@ -1104,6 +1102,7 @@ export default {
       this.map.setView(event.target.options.center, this.mapMinZoom)
       event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
+      this.$root.$emit('swkClickedOut')
     },
     onPolyHover(event){
       event.target.openPopup();
@@ -1123,6 +1122,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .map {
-  height: 600px;
+  height: 450px;
 }
 </style>
