@@ -27,7 +27,6 @@
 
 <script>
 import Map from './components/Map.vue'
-import Graph from './components/Graph.vue'
 import BootstrapVue from 'bootstrap-vue'
 import Vue from 'vue'
 import PieChart from './components/PieChart.vue'
