@@ -1062,6 +1062,198 @@ export default {
               type: "Sejarah",
               name: "Museum Pos Indonesia",
               coords: [-6.9023181,107.6199678]
+            },
+            {
+              id: 4,
+              type: "Hiburan",
+              name: "Saung Angklung Udjo",
+              coords: [-6.898032,107.654965]
+            },
+{
+              id: 5,
+              type: "Taman",
+              name: "Lapangan Gasibu",
+              coords: [-6.9003069,107.6187099]
+            },
+            {
+              id: 6,
+              type: "Sejarah",
+              name: "Monumen Perjuangan Rakyat Jawa Barat",
+              coords: [-6.8934327,107.6185513]
+            },
+            {
+              id: 7,
+              type: "Sejarah",
+              name: "Museum Geologi",
+              coords: [-6.9007162,107.6214553]
+            },
+            {
+              id: 8,
+              type: "Sejarah",
+              name: "Museum Konferensi Asia Afrika",
+              coords: [-6.9210921,107.6095347]
+            },
+            {
+              id: 9,
+              type: "Sejarah",
+              name: "Museum Mandala Wangsit Siliwangi",
+              coords: [-6.9176857,107.6112641]
+            },
+            {
+              id: 10,
+              type: "Wisata Budaya",
+              name: "Rumah Batik Komar",
+              coords: [-6.9131835,107.6171841]
+            },
+            {
+              id:11,
+              type: "Wisata Budaya",
+              name: "Kampung Wisata Augmented Reality",
+              coords: [-6.869957, 107.6147321]
+            },
+            {
+              id: 12,
+              type: "Hiburan",
+              name: "Teras Cihampelas",
+              coords: [-6.893497,107.604303]
+            },
+            {
+              id: 13,
+              type: "Taman",
+              name: "Taman Lalu Lintas",
+              coords: [-6.911211,107.6133391]
+            },
+            {
+              id:14,
+              type: "Shopping",
+              name: "Pusat Perbelanjaan Jeans",
+              coords: [-6.8931531,107.6041827]
+            },
+            {
+              id: 15,
+              type: "Taman",
+              name: "Taman Lansia",
+              coords: [-6.9021326,107.6209387]
+            },
+            {
+              id: 16,
+              type: "Taman",
+              name: "Taman Balaikota Bandung",
+              coords: [-6.912966,107.609603]
+            },
+            {
+              id:17,
+              type: "Sejarah",
+              name: "Taman Makam Pahlawan",
+              coords: [-6.8923299,107.6355555]
+            },
+            {
+              id: 18,
+              type: "Shopping",
+              name: "Pusat Factory Outlet",
+              coords: [-6.8827223,107.5998484]
+            },
+            {
+              id: 19,
+              type: "Taman",
+              name: "Taman Ganesha",
+              coords: [-6.893667,107.610564]
+            },
+            {
+              id:20,
+              type: "Wisata Alam",
+              name: "Kampung Bamboo",
+              coords: [-6.871436,107.666993]
+            },
+            {
+              id: 21,
+              type: "Wisata Alam",
+              name: "Teras Cikapundung",
+              coords: [-6.8844307,107.6068384]
+            },
+            {
+              id: 22,
+              type: "Taman",
+              name: "Taman Vanda",
+              coords: [-6.9140545,107.6101722]
+            },
+            {
+              id:23,
+              type: "Wisata Alam",
+              name: "Curug Dago",
+              coords: [-6.8655225,107.6181878]
+            },
+            {
+              id: 24,
+              type: "Taman",
+              name: "Taman Dago",
+              coords: [-6.8986799,107.61245564]
+            },
+            {
+              id: 25,
+              type: "Hiburan",
+              name: "Rabbit Town",
+              coords: [-6.8669518,107.6100859]
+            },
+            {
+              id:26,
+              type: "Wisata Alam",
+              name: "Kawasan Wisata Punclut",
+              coords: [-6.8421702,107.6229203]
+            },
+            {
+              id: 27,
+              type: "Taman",
+              name: "Taman Superhero",
+              coords: [-6.910999,107.630531]
+            },
+            {
+              id: 28,
+              type: "Wisata Alam",
+              name: "Kebun Hidroponik Punclut",
+              coords: [-6.8421702,107.6229203]
+            },
+            {
+              id:29,
+              type: "Wisata Alam",
+              name: "Forest Walk Babakan Siliwangi",
+              coords: [-6.8848893,107.6101113]
+            },
+            {
+              id: 30,
+              type: "Hiburan",
+              name: "Upside Down World bandung",
+              coords: [-6.8963045,107.617006]
+            },
+            {
+              id: 31,
+              type: "Taman",
+              name: "Taman Saparua",
+              coords: [-6.908557,107.6161867]
+            },
+            {
+              id:32,
+              type: "Taman",
+              name: "Taman Jomblo",
+              coords: [-6.8981104,107.6092542]
+            },
+            {
+              id: 33,
+              type: "Taman",
+              name: "Taman Cibeunying",
+              coords: [-6.9044913,107.6241638]
+            },
+            {
+              id: 34,
+              type: "Shopping",
+              name: "Cihampelas Walk",
+              coords: [-6.893394,107.6053482]
+            },
+            {
+              id:35,
+              type: "Shopping",
+              name: "Bandung Indah Plaza",
+              coords: [-6.9085962,107.6110129]
             }
           ]
         },
@@ -1092,6 +1284,18 @@ export default {
               type: "Hiburan",
               name: "Amazing Art World",
               coords: [-6.8516538,107.5933647]
+            },
+            {
+              id: 4,
+              type: "Wisata Budaya",
+              name: "Chinatown Bandung",
+              coords: [-6.9172764,107.5931177]
+            },
+            {
+              id: 5,
+              type: "Wisata Budaya",
+              name: "NuArt Sculpture Park",
+              coords: [-6.877463,107.572439]
             }
           ]
         },
@@ -1099,7 +1303,24 @@ export default {
           id: 2,
           name: "Destination Tegalega",
           markers: [
-            
+            {
+              id: 0,
+              type: "Sejarah",
+              name: "Museum Sri Baduga",
+              coords: [-6.9376785,107.6035245]
+            },
+            {
+              id: 1,
+              type: "Shopping",
+              name: "Pusat Sepatu dan Tas Cibaduyut",
+              coords: [-6.9503274,107.5934196]
+            },
+            {
+              id: 2,
+              type: "Taman",
+              name: "Lapangan Tegalega",
+              coords: [-6.936556,107.6046553]
+            }
           ]
         },
         {
@@ -1128,7 +1349,25 @@ export default {
               id: 3,
               type: "Shopping",
               name: "Pusat Perbelanjaan Kings Plaza",
-              coords: [-6.9156886,107.598071]
+              coords: [-6.9230713,107.6047486]
+            },
+            {
+              id: 4,
+              type: "Hiburan",
+              name: "Trans Studio Bandung",
+              coords: [-6.9249434,107.6360094]
+            },
+            {
+              id: 5,
+              type: "Hiburan",
+              name: "Cibunut Berwarna",
+              coords: [-6.919757,107.61828]
+            },
+            {
+              id: 6,
+              type: "Shopping",
+              name: "Trans Studio Mall",
+              coords: [-6.9250632,107.6365103]
             }
           ]
         },
@@ -1136,7 +1375,12 @@ export default {
           id: 4,
           name: "Destination Ujungberung",
           markers: [
-            
+            {
+              id: 0,
+              type: "Hiburan",
+              name: "Arcamanik Sport Center",
+              coords: [-6.9108359,107.6752624]
+            }
           ]
         },
         {
