@@ -3,6 +3,13 @@
     <div>
       <b-navbar toggleable="lg" type="dark" variant="info">
         <b-navbar-brand href="#">Bandung Tourism</b-navbar-brand>
+
+        <!-- Right aligned nav items -->
+        <b-navbar-nav class="ml-auto">
+          <b-nav-form>
+            <b-badge pill variant="light" id="swk-active" ref="swk-active">Kota Bandung</b-badge>
+          </b-nav-form>
+        </b-navbar-nav>
       </b-navbar>
     </div>
     <b-card bg-variant="light" text-variant="white" style="s">
@@ -37,6 +44,11 @@ Vue.use(BootstrapVue)
 
 export default {
   name: 'app',
+  data: function(){
+    return {
+      swk : ["Cibeunying", "Bojonagara", "Tegalega", "Karees", "Ujungberung", "Gedebage"]
+    }
+  },
   components: {
     Map,
     PieChart
@@ -44,7 +56,21 @@ export default {
   methods: {
     updateTotalDestination: function(e) {
       this.$refs["total-destination"].innerText = e
+    },
+    setSwk: function(e) {
+      this.$refs['swk-active'].innerText = this.swk[e]
+    },
+    setKotaBandung: function() {
+      this.$refs['swk-active'].innerText = "Kota Bandung"
     }
+  },
+  mounted() {
+    this.$root.$on('swkClickedIn', (swkId) => {
+        this.setSwk(swkId)
+    })
+    this.$root.$on('swkClickedOut', () => {
+        this.setKotaBandung()
+    })
   }
 }
 
