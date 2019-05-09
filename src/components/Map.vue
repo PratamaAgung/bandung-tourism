@@ -12,6 +12,7 @@ export default {
       map: null,
       mapMinZoom: 12,
       mapMaxZoom: 18,
+      swkZoom: 13,
       tileLayer: null,
       icon: {
         alam : null,
@@ -409,7 +410,7 @@ export default {
             [-6.841573, 107.597493],
             [-6.839423, 107.597348]
           ],
-          center: [-6.914744, 107.609810]
+          center: [-6.911056, 107.636914]
       },
       layers: [
         {
@@ -421,6 +422,7 @@ export default {
               id: 1,
               name: "Bojonagara",
               type: "polygon",
+              fillColor: "#416FC3",
               coords: [
                 [-6.839250, 107.596872],
                 [-6.843597, 107.596528],
@@ -493,6 +495,7 @@ export default {
               id: 0,
               name: "Cibeunying",
               type: "polygon",
+              fillColor: "#162746",
               coords: [
                 [-6.920825, 107.604091], // perempatan sudirman-otista
                 [-6.912750, 107.604661],
@@ -645,6 +648,7 @@ export default {
               id: 2,
               name: "Tegallega",
               type: "polygon",
+              fillColor: "#90ABDC",
               coords: [
                 [-6.920825, 107.604091], // perempatan sudirman-otista
                 [-6.917175, 107.574356], // bunderan elang-soetta-sudirman
@@ -717,6 +721,7 @@ export default {
               id: 3,
               name: "Karees",
               type: "polygon",
+              fillColor: "#416FC3",
               coords: [
                 [-6.922096, 107.603035], // perempatan otista-cibadak
                 [-6.937188, 107.603035], // pertigaan BKR-otista
@@ -773,6 +778,7 @@ export default {
               id: 4,
               name: "Ujungberung",
               type: "polygon",
+              fillColor: "#90ABDC",
               coords: [
                 [-6.942068, 107.693426], ////
                 [-6.943501, 107.697252],
@@ -924,6 +930,7 @@ export default {
               id: 5,
               name: "Gedebage",
               type: "polygon",
+              fillColor: "#FFFFFF",
               coords: [
                 [-6.960801, 107.616532], ////
                 [-6.957125, 107.614467],
@@ -1098,7 +1105,7 @@ export default {
   },
   methods: {
     initMap() {
-      this.map = L.map('map').setView([-6.911056, 107.636914], this.mapMinZoom);
+      this.map = L.map('map').setView(this.backgroundLayer.center, this.mapMinZoom);
       this.tileLayer = L.tileLayer(
         'https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}.png',
         {
@@ -1140,6 +1147,10 @@ export default {
             "id" : feature.id
           })
           feature.leafletObject.bindPopup(feature.name + "\n13")
+          feature.leafletObject.setStyle({
+            fillOpacity: 1,
+            fillColor: feature.fillColor
+          })
           feature.leafletObject.on('mouseover', this.onPolyHover)
           feature.leafletObject.on('mouseout', this.onPolyOut)
           feature.leafletObject.on('click', this.onPolyClickIn)
@@ -1223,7 +1234,7 @@ export default {
         fillOpacity: 0,
       })
       this.isFilled = false
-      this.map.fitBounds(event.target.getBounds())
+      this.map.setView(event.target.options.center, this.swkZoom)
 
       const swkId = event.target.options.id
       this.destination[swkId].markers.forEach(marker => {
@@ -1236,10 +1247,10 @@ export default {
     },
     onPolyClickOut(event){
       event.target.setStyle({
-        fillOpacity: 0.1,
+        fillOpacity: 1,
       })
       this.isFilled = true
-      this.map.setView(event.target.options.center, this.mapMinZoom)
+      this.map.setView(this.backgroundLayer.center, this.mapMinZoom)
 
       const swkId = event.target.options.id
       this.destination[swkId].markers.forEach(marker => {
