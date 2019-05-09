@@ -1,6 +1,7 @@
 # bandung-tourism
 -------------------
-Aplikasi ini merupakan suatu *dashboard* data yang akan memvisualisasikan data mengenai keadaan pariwisata di KOta Bandung.
+Aplikasi ini merupakan suatu *dashboard* data yang akan memvisualisasikan data mengenai keadaan pariwisata di Kota Bandung.
+Versi live dapat dilihat di [http://bandung-tourism.herokuapp.com](http://bandung-tourism.herokuapp.com)
 
 ## Features
 - Menampilkan data pariwisata Kota Bandung, dibagi ke dalam subwilayah kota (SWK)
