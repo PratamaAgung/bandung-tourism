@@ -1069,7 +1069,30 @@ export default {
           id: 1,
           name: "Destination Bojonagara",
           markers: [
-
+            {
+              id: 0,
+              type: "Sejarah",
+              name: "Monumen Husein Sastranegara",
+              coords: [-6.9067655,107.5852099]
+            },
+            {
+              id: 1,
+              type: "Shopping",
+              name: "Pusat Perbelanjaan Pasar Baru",
+              coords: [-2.4277248,99.6621227]
+            },
+            {
+              id: 2,
+              type: "Hiburan",
+              name: "Pandora Experience",
+              coords: [-6.8834131,107.5942174]
+            },
+            {
+              id: 3,
+              type: "Hiburan",
+              name: "Amazing Art World",
+              coords: [-6.8516538,107.5933647]
+            }
           ]
         },
         {
@@ -1083,7 +1106,30 @@ export default {
           id: 3,
           name: "Destination Karees",
           markers: [
-            
+            {
+              id: 0,
+              type: "Wisata Alam",
+              name: "Alun-Alun Bandung",
+              coords: [-6.9218691,107.604944]
+            },
+            {
+              id: 1,
+              type: "Wisata Budaya",
+              name: "Masjid Agung Kota Bandung",
+              coord: [-6.9217154,107.6040737]
+            },
+            {
+              id: 2, 
+              type: "Sejarah",
+              name: "Monumen Bandung Lautan Api",
+              coords: [-6.9338444,107.6027363]
+            },
+            {
+              id: 3,
+              type: "Shopping",
+              name: "Pusat Perbelanjaan Kings Plaza",
+              coords: [-6.9156886,107.598071]
+            }
           ]
         },
         {
