@@ -1565,6 +1565,8 @@ export default {
         this.map.removeLayer(marker.leafletObject)
       })
 
+      this.layers[0].features.filter(swk => swk.id == event.target.options.id)[0].isSelected = false
+
       event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
       this.$root.$emit('swkClickedOut')
