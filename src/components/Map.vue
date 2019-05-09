@@ -1165,12 +1165,12 @@ export default {
               name: "Taman Ganesha",
               coords: [-6.893667,107.610564]
             },
-            {
-              id:20,
-              type: "Wisata Alam",
-              name: "Kampung Bamboo",
-              coords: [-6.871436,107.666993]
-            },
+            // {
+            //   id:20,
+            //   type: "Wisata Alam",
+            //   name: "Kampung Bamboo",
+            //   coords: [-6.871436,107.666993]
+            // },
             {
               id: 21,
               type: "Wisata Alam",
@@ -1302,6 +1302,12 @@ export default {
               type: "Wisata Budaya",
               name: "NuArt Sculpture Park",
               coords: [-6.877463,107.572439]
+            },
+            {
+              id: 6,
+              type: "Shopping",
+              name: "Paris Van Java",
+              coords: [-6.8892532,107.5960354]
             }
           ]
         },
