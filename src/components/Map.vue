@@ -489,7 +489,8 @@ export default {
                 [-6.839423, 107.597348]
               ],
               center: [-6.889539, 107.592143],
-              isActive: false
+              isActive: false,
+              isSelected: false
             },
             {
               id: 0,
@@ -642,7 +643,8 @@ export default {
                 [-6.920875, 107.604470]
               ],
               center: [-6.893301, 107.632256],
-              isActive: false
+              isActive: false,
+              isSelected: false
             },
             {
               id: 2,
@@ -715,7 +717,8 @@ export default {
                 [-6.922096, 107.603035] // perempatan otista-cibadak
               ],
               center: [-6.937868, 107.585838],
-              isActive: false
+              isActive: false,
+              isSelected: false
             },
             {
               id: 3,
@@ -772,7 +775,8 @@ export default {
                 [-6.920875, 107.604470]
               ],
               center: [-6.930315, 107.632134],
-              isActive: false
+              isActive: false,
+              isSelected: false
             },
             {
               id: 4,
@@ -924,7 +928,8 @@ export default {
                 [-6.926622, 107.651141], // jalan kereta
               ],
               center: [-6.916327, 107.681511],
-              isActive: false
+              isActive: false,
+              isSelected: false
             },
             {
               id: 5,
@@ -1029,7 +1034,8 @@ export default {
                 [-6.957125, 107.614467], //
               ],
               center: [-6.949000, 107.659268],
-              isActive: false
+              isActive: false,
+              isSelected: false
             }
           ]
         }
@@ -1337,7 +1343,7 @@ export default {
               id: 1,
               type: "Wisata Budaya",
               name: "Masjid Agung Kota Bandung",
-              coord: [-6.9217154,107.6040737]
+              coords: [-6.9217154,107.6040737]
             },
             {
               id: 2, 
@@ -1520,10 +1526,22 @@ export default {
       }
     },
     onPolyClickIn(event){
+      this.layers[0].features.forEach(swk => {
+        if (swk.isSelected) {
+          swk.leafletObject.setStyle({
+            fillOpacity: 1
+          })
+          this.destination[swk.id].markers.forEach(marker => {
+            this.map.removeLayer(marker.leafletObject)
+          })
+          swk.isSelected = false
+        }
+      })
       event.target.setStyle({
         fillOpacity: 0,
       })
       this.isFilled = false
+      this.layers[0].features.filter(swk => swk.id == event.target.options.id)[0].isSelected = true
       this.map.setView(event.target.options.center, this.swkZoom)
 
       const swkId = event.target.options.id
