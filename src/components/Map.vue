@@ -1146,7 +1146,7 @@ export default {
             'center' : feature.center,
             "id" : feature.id
           })
-          feature.leafletObject.bindPopup(feature.name + "\n13")
+          feature.leafletObject.bindPopup(feature.name + ": " + this.destination.filter(dest => dest.id == feature.id)[0].markers.length)
           feature.leafletObject.setStyle({
             fillOpacity: 1,
             fillColor: feature.fillColor
