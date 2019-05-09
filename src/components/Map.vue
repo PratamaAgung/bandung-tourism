@@ -13,6 +13,14 @@ export default {
       mapMinZoom: 12,
       mapMaxZoom: 18,
       tileLayer: null,
+      icon: {
+        alam : null,
+        budaya: null,
+        sejarah : null,
+        taman: null,
+        shopping: null,
+        hiburan: null
+      },
       backgroundLayer: {
         id: 0,
         name: "Kota Bandung",
@@ -447,6 +455,12 @@ export default {
               type: "Hiburan",
               name: "Kebun Binatang Bandung",
               coords: [-6.8902867,107.6068401]
+            },
+            {
+              id: 3,
+              type: "Sejarah",
+              name: "Museum Pos Indonesia",
+              coords: [-6.9023181,107.6199678]
             }
           ]
         },
@@ -544,9 +558,71 @@ export default {
       })
       this.destination.forEach(swk => {
         swk.markers.forEach(marker => {
-          marker.leafletObject = L.marker(marker.coords).bindPopup(marker.name)
+          const destIcon = this.getIcon(marker.type)
+          marker.leafletObject = L.marker(marker.coords, {icon: destIcon}).bindPopup(marker.name)
+          
         })
       })
+    },
+    initIcon(){
+      this.icon.alam = L.icon({
+          iconUrl: require('../assets/nature.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+      this.icon.hiburan = L.icon({
+          iconUrl: require('../assets/hiburan.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+      this.icon.sejarah = L.icon({
+          iconUrl: require('../assets/history.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+      this.icon.budaya = L.icon({
+          iconUrl: require('../assets/culture.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+      this.icon.taman = L.icon({
+          iconUrl: require('../assets/park.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+      this.icon.shopping = L.icon({
+          iconUrl: require('../assets/shopping.png'),
+
+          iconSize:     [20, 20], // size of the icon
+          iconAnchor:   [11, 19], // point of the icon which will correspond to marker's location
+          popupAnchor:  [-3, -21] // point from which the popup should open relative to the iconAnchor
+      })
+    },
+    getIcon(type) {
+      switch(type){
+        case "Wisata Alam":
+          return this.icon.alam
+        case "Wisata Budaya":
+          return this.icon.budaya
+        case "Sejarah":
+          return this.icon.sejarah
+        case "Shopping":
+          return this.icon.shopping
+        case "Taman":
+          return this.icon.taman
+        case "Hiburan":
+          return this.icon.hiburan
+      }
     },
     onPolyClickIn(event){
       event.target.setStyle({
@@ -589,6 +665,7 @@ export default {
   },
   mounted() {
     this.initMap();
+    this.initIcon();
     this.initBackground();
     this.initLayers();
   },
