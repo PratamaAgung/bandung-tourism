@@ -407,7 +407,7 @@ export default {
         {
           id: 0,
           name: "SWK Kota Bandung",
-          active: false,
+          active: true,
           features: [
             {
               id: 0,
@@ -425,6 +425,67 @@ export default {
           ]
         }
       ],
+      destination: [
+        {
+          id: 0,
+          name: "Destination Cibeunying",
+          markers: [
+            {
+              id: 0,
+              type: "Wisata Alam",
+              name: "Kebun Hidroponik Punclut",
+              coords: [-6.8419756,107.622824]
+            },
+            {
+              id: 1,
+              type: "Sejarah",
+              name: "Gedung Sate",
+              coords: [-6.9024812,107.61881]
+            },
+            {
+              id: 2,
+              type: "Hiburan",
+              name: "Kebun Binatang Bandung",
+              coords: [-6.8902867,107.6068401]
+            }
+          ]
+        },
+        {
+          id: 1,
+          name: "Destination Bojonagara",
+          markers: [
+
+          ]
+        },
+        {
+          id: 2,
+          name: "Destination Tegalega",
+          markers: [
+            
+          ]
+        },
+        {
+          id: 3,
+          name: "Destination Karees",
+          markers: [
+            
+          ]
+        },
+        {
+          id: 4,
+          name: "Destination Ujungberung",
+          markers: [
+            
+          ]
+        },
+        {
+          id: 5,
+          name: "Destination Gedebage",
+          markers: [
+            
+          ]
+        }
+      ]
     }
   },
   methods: {
@@ -463,12 +524,7 @@ export default {
     },
     initLayers() {
       this.layers.forEach((layer) => {
-        const markerFeatures = layer.features.filter(feature => feature.type === 'marker');
         const polygonFeatures = layer.features.filter(feature => feature.type === 'polygon');
-        markerFeatures.forEach((feature) => {
-          feature.leafletObject = L.marker(feature.coords)
-            .bindPopup(feature.name);
-        });
         polygonFeatures.forEach((feature) => {
           feature.leafletObject = L.polygon(feature.coords, {
             'label' : feature.name,
@@ -486,6 +542,11 @@ export default {
           }
         })
       })
+      this.destination.forEach(swk => {
+        swk.markers.forEach(marker => {
+          marker.leafletObject = L.marker(marker.coords).bindPopup(marker.name)
+        })
+      })
     },
     onPolyClickIn(event){
       event.target.setStyle({
@@ -493,6 +554,12 @@ export default {
       })
       this.isFilled = false
       this.map.fitBounds(event.target.getBounds())
+
+      const swkId = event.target.options.id
+      this.destination[swkId].markers.forEach(marker => {
+        marker.leafletObject.addTo(this.map)
+      })
+
       event.target.off('click', this.onPolyClickIn)
       event.target.on('click', this.onPolyClickOut)
       this.$root.$emit('swkClickedIn', event.target.options.id)
@@ -503,6 +570,12 @@ export default {
       })
       this.isFilled = true
       this.map.setView(event.target.options.center, this.mapMinZoom)
+
+      const swkId = event.target.options.id
+      this.destination[swkId].markers.forEach(marker => {
+        this.map.removeLayer(marker.leafletObject)
+      })
+
       event.target.off('click', this.onPolyClickOut)
       event.target.on('click', this.onPolyClickIn)
       this.$root.$emit('swkClickedOut')
