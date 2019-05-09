@@ -1,4 +1,11 @@
 # bandung-tourism
+-------------------
+Aplikasi ini merupakan suatu *dashboard* data yang akan memvisualisasikan data mengenai keadaan pariwisata di KOta Bandung.
+
+## Features
+- Menampilkan data pariwisata Kota Bandung, dibagi ke dalam subwilayah kota (SWK)
+- Pembagian objek wisata berdasarkan jenisnya
+- Visualisasi interaktif yang mendukung eksplorasi
 
 ## Project setup
 ```
@@ -15,15 +22,9 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
-```
-npm run test
-```
+## Author
+- Faiz Ghifari Haznitrama - 13515010
+- Abdurrahman - 13515024
+- Pratamamia Agung Prihatmaja - 13515142
 
-### Lints and fixes files
-```
-npm run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
