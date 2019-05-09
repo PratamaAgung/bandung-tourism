@@ -410,7 +410,6 @@ export default {
           active: false,
           features: [
             {
-<<<<<<< HEAD
               id: 1,
               name: "Bojonagara",
               type: "polygon",
@@ -483,8 +482,6 @@ export default {
               isActive: false
             },
             {
-=======
->>>>>>> c83e341a705a244ed76b6d4438df117d45038fdc
               id: 0,
               name: "Cibeunying",
               type: "polygon",
